@@ -1,0 +1,453 @@
+/*INDEX*/
+.body1 {
+    
+    background-image:url("imagenes/fondo5.png");
+    background-repeat: repeat;
+    opacity: 100%;
+    box-sizing: border-box;
+    max-width: 100%;
+    margin: 0 15%;
+    padding: 0;
+}
+
+nav{
+    background-color: #f8b9ed;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 1em;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 20px;
+     font-family: verdana;
+}
+
+ul {
+    margin: 0;
+    padding: 10px;
+    list-style-type: none;
+    text-align: center;
+}
+
+li {
+    display: inline-block;
+    line-height: 21px;  
+}
+
+a {
+    margin: 10px;
+    padding: 5px 10px;
+    color: #E85AAE;
+    text-decoration: none;
+    font-family: arial black;
+    transition: 0.3s ease;
+}
+
+a:hover {
+    background-color: #f8b0bd;
+    box-sizing: border-box;
+    border: 0 solid #FFB9F6;
+    box-shadow: inset 0 0 40px white, 0 0 ;
+    border-radius: 10px;
+    color: white;
+}
+
+h1{
+    font-family: arial black;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #E85AAE;
+    padding: 0;
+    font-size: 30px;
+}
+strong{
+    color: #E85AAE;
+}
+
+p {
+    font-family: serif;
+    text-align: center;
+}
+
+header {
+    background-image: url("imagenes/banner7.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 1em;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 10px
+}
+
+section{
+    background: white;
+    padding: 1em;
+    margin: 1em;
+    border-radius: 10px
+}
+
+.contenedor1 {
+    margin: 20px;
+    padding: 20px;
+    background: #f8b0bd;
+    width: 92%;
+    height: 50%;
+    text-align: left;
+    border-radius: 10px;
+    font-size: 18px;
+    text-align: center;
+}
+
+.contenedor-1{
+   font-family: arial black;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #E85AAE;
+    padding: 0;
+    font-size: 30px;
+}
+
+.imagen1{
+    width: 80%;
+    margin-left: 220px;
+}
+
+img{
+    width: 60%;
+    margin: 0;
+    padding: 0;
+}
+
+footer{
+    background: #f8b9ed;
+    margin: 5px;
+    padding: 5px;
+    text-align: center;
+    color: #E85AAE;
+    font-family: verdana black;
+     border-radius: 20px;
+}
+
+
+/*CARTAS*/
+.body2{
+    background-image:url("imagenes/fondo5.png");
+background-repeat: no-repeat;
+    background-color: #f8b6d2;
+    opacity: 100%;
+    box-sizing: border-box;
+    max-width: 100%;
+    margin: 0 15%;
+    padding: 0;
+}
+nav{
+    background-color: #f8b9ed;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 1em;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 20px;
+     font-family: verdana;
+}
+
+ul {
+    margin: 0;
+    padding: 10px;
+    list-style-type: none;
+    text-align: center;
+}
+
+li {
+    display: inline-block;
+    line-height: 21px;  
+}
+
+a {
+    margin: 10px;
+    padding: 5px 10px;
+    color: #E85AAE;
+    text-decoration: none;
+    font-family: arial black;
+    transition: 0.3s ease;
+}
+
+a:hover {
+    background-color: #f8b0bd;
+    box-sizing: border-box;
+    border: 0 solid #FFB9F6;
+    box-shadow: inset 0 0 40px white, 0 0;
+    border-radius: 10px;
+    color: white;
+}
+
+h1{
+    font-family: arial black;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #E85AAE;
+    padding: 0;
+}
+h2{
+    font-family: arial black;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #E85AAE;
+    padding: 0;
+    margin: 5px;
+}
+
+header {
+    background-image: url("imagenes/banner7.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 1em;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 10px
+}
+
+section{
+    background: white;
+    padding: 1em;
+    margin: 1em;
+    border-radius: 10px
+}
+
+.bloque2{
+   margin: 20px;
+    padding: 20px;
+    background: #f8b0bd;
+    width: 92%;
+    height: 50%;
+    text-align: left;
+    border-radius: 10px;
+    font-size: 18px;
+    text-align: center;
+}
+/* imagen*/
+ .imagen2{
+    margin: 10px;
+    padding: 10px;
+    width: 40%;
+    height: 50%;
+    margin-left: 250px;
+}
+.obj{
+    padding: 1em;
+    margin: 1em;
+    border-radius: 10px;
+    background-color: #e6a1be;
+    text-align: left;
+}
+.contenedor2{
+    padding: 1em;
+    margin: 1em;
+    border-radius: 10px;
+    background-color: #e6a1be;
+    text-align: left;
+
+}
+
+.cards{
+    width: 30%;
+    margin-left: 350px;
+
+}
+   /*Botones de juego*/
+   button{
+    background-color: #fc68a2;
+    color: white;
+    font-family: arial black;
+    border-radius: 10px;
+    box-shadow:inset 0 0 40px #fc68a2, 0 0;
+    text-align: center;
+    margin: 20px;
+} 
+.init {
+        width: 30%;
+        padding: 10px;
+        margin-left: 350px;
+        text-align: center;
+}
+
+.areaPoints{
+        display: none;
+        font-family: arial black;
+        text-align: center;
+        margin-left: 350px;
+        color:#E85AAE;
+        font-size: 25px; 
+         }
+
+.majorButtons{
+        font-family: arial black;
+        text-align: center;
+        margin-left: 30px;
+        color:#E85AAE;
+        font-size: 25px;
+        background-color: white;
+        border-radius: 20px;
+        border: 15px solid #e6a1be;
+}
+    
+.minorButtons{
+        font-family: arial black;
+        text-align: center;
+        margin-left: 30px;
+        color:#E85AAE;
+        font-size: 25px;
+        background-color: white;
+        border-radius: 20px;
+        border: 15px solid #e6a1be;
+}
+
+.buttonBox {
+        display: none;
+        gap: 30px; 
+        align-items: center;
+        text-align: center;
+}
+.betButtons {
+        padding: 10px;
+        border-radius: 20px;
+        background-color: pink;
+}
+/*dados*/
+.bloque3{
+        margin: 20px;
+        padding: 20px;
+        background: #f8b0bd;
+        width: 92%;
+        height: 50%;
+        text-align: left;
+        border-radius: 10px;
+        font-size: 18px;
+        text-align: center;
+}
+.imagen3{
+        display: flex;
+        margin: 10px;
+        padding: 10px;
+        width: 50%;
+        height: 50%;
+        margin-left: 150px;
+}
+
+/*Juego de dados*/
+.containercartas{
+        display: inline-flex;
+        width: 30%;
+        margin: auto;
+        text-align: center;
+}
+
+.dice {
+        display: inline-grid;
+        justify-content: center;
+        align-items: center;
+        margin-right: 100px;
+        color:#E85AAE;
+        font-size: 20px;
+}
+
+.Player1{
+        margin: 1em;
+        padding: 1em;
+        width: 100px;
+        margin-left: 200px;
+        font-family: arial;
+        color: #E85AAE;
+        padding: 0;
+        text-align: center;
+        margin-bottom: 200px;
+        margin-left: 220px;
+        font-family: arial black;
+}
+
+.imag1{
+        width: 50%;
+        margin-left: 190px;
+        margin-top: -200px;
+}
+
+.Player2{
+        margin: 1em;
+        padding: 1em;
+        width: 100px;
+        margin-left: 200px;
+        font-family: arial;
+        color: #E85AAE;
+        padding: 0;
+        text-align: center;
+        margin-bottom: 200px;
+        margin-left: 220px;
+        font-family: arial black;
+}
+
+.imag2{
+        width: 50%;
+        margin-left: 190px;
+        margin-top: -200px;
+
+}
+
+.containerbottom2{
+        display: flex;
+        width: 60%;
+        margin-left: 350px;
+        text-align: center;
+        align-items: center;
+        margin-right: 10px;
+}
+
+.butn {
+    background: pink;
+        font-family: arial black;
+        color: white;
+        font-size: 20px;
+        padding: 20px;
+        cursor: pointer;
+        width: 40%;
+        border-radius: 15px;
+}
+      
+.butn:hover {
+        background: #f8b0bd;
+        text-decoration: none;
+        transition: 0.3s ease;
+}
+
+/* PAGINA SANRIO*/
+.bloqueimagen4{
+        display: inline-flex;
+}
+
+.imagen5{
+        margin-top: -90px;
+        padding: 10px;
+        width: 100%;
+        margin-right: 100px;
+}
+
+/* PAGINA INFORMACION*/
+
+.infor{
+        text-align: center;
+        font-family: serif;
+        font-size: 18px;
+        color: black;
+}
+
+.inforP{
+        background-color: pink;
+        border-radius: 15px;
+        padding: 1em;
+        margin: 1em;
+}
+
+.imagen4{
+        display: flex;
+        width: 100%;
+        height: 500px;
+        margin-left: 250px;
+}

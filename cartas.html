@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilos.css">
+    <title>Juego de cartas</title>
+</head>
+<body class="body2">
+    <header>
+    <h1>¡Bienvenidos a la página de mini juegos!</h1>
+</header>
+     <nav>
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="cartas.html">Jugar a las cartas</a></li>  
+            <li><a href="dados.html">Jugar a tirar dado</a></li>
+            <li><a href="sanrio.html">Sanrio</a></li>
+            <li><a href="informacion.html">Información</a></li>
+        </ul>
+    </nav>
+     <section>
+    <div class="bloque2">
+        <h2><strong>Adivina la siguiente carta</strong></h2>
+        <aside class="imagen2">
+            <img src="imagenes/sanrio2.png" alt="personajes de sanrio">
+            </aside>
+    </div>
+        
+        <div class="obj">
+        <h2><strong>Objetivo del juego</strong></h2>
+        <p>En cada turno el jugador deberá apostar una cantidad de puntos y adivinar si la siguiente carta será mayor o menor. De esta manera podrá ir sumando o restando puntos. Si llega a 50 puntos o más, gana el juego. Si llega a 0 puntos o menos, pierde.</p>
+        </div>
+       
+        <div class="contenedor2">
+        <h2><strong>Funcionamiento del juego</strong></h2>
+        <p> - Al iniciar, el jugador <strong>tiene 5 puntos.</strong><br>
+        - Se da comienzo al juego mostrando una carta.<br>
+        - El jugador debe apostar si la siguiente carta será mayor o menor a la primera carta mostrada.<br> 
+        - En cada apuesta el jugador elige la cantidad de puntos que quiere apostar. Puede apostar 1, 3 o 5 puntos. Si acierta gana la misma cantidad de puntos que apostó. Si no acierta pierde los puntos que apostó. Si sale una carta igual a la anterior, el jugador no gana ni pierde.<br>
+        - Luego de apostar se revela la siguiente carta y se asignan los puntos. 
+            ejemplo: la primera carta es un 4. El jugador apuesta que la siguiente será mayor y apuesta 3 puntos. Al mostrarse la siguiente carta es un 7, por lo tanto el jugador gana 3 puntos y su puntaje total será 8.<br> 
+        - Existen 3 cartas especiales o comodines.<br> 
+        - La primera carta especial hace que el juegador gane 10 puntos sin importar qué había apostado.<br> 
+        - La segunda carta especial duplica la apuesta del jugador, haciendo que gane el doble o que pierda el doble de puntos apostados.<br>
+        - La tercera carta especial reinicia el puntaje, por lo que el jugador vuelve a tener 5 puntos.</p>
+    </div> 
+    </section>
+
+    <div class="container">
+        <button class="init" onclick="iniciar()">Iniciar juego</button>
+        <div>
+            <img class="cards" src="imagenes/cartaalreves.png" alt="carta volteada">
+        </div>
+        <p class="areaPoints">Puntos del jugador: <span class="currentPoints"></span></p>
+
+        <div class="buttonBox">
+            <div class="majorButtons">
+                <p>Mayor</p>
+                <button onclick="evaluar(1, true)" class="betButtons">Apostar 1 punto</button>
+                <button onclick="evaluar(3, true)" class="betButtons">Apostar 3 puntos</button>
+                <button onclick="evaluar(5, true)" class="betButtons">Apostar 5 puntos</button>
+            </div>
+            <div class="minorButtons">
+                <p>Menor</p>
+                <button onclick="evaluar(1, false)" class="betButtons">Apostar 1 punto</button>
+                <button onclick="evaluar(3, false)" class="betButtons">Apostar 3 puntos</button>
+                <button onclick="evaluar(5, false)" class="betButtons">Apostar 5 puntos</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Universidad Nacional de las Artes</p> 
+            <p>Melanie Travaglini</p>
+            <p>Informática General (Cát. Drelichman) Turno Mañana</p>
+    </footer>
+
+    <script>
+
+        let generador;
+let puntosjugador;
+let primeraCartaGenerada = false; 
+let cartaAnterior;
+let apuestaOriginal;
+
+//Esta funcion sirve para dar inicio al juego lo cual el boton init se le da un estilo para ocultar inicial, mostrar los botones de la apuesta y puntos de jugador
+function iniciar(){
+    document.querySelector('.init').style.display = 'none';
+    document.querySelector('.buttonBox').style.display = 'flex';
+    generador = generar();
+    
+    //le da al jugador para iniciar con 5 puntos
+    puntosjugador = 5;
+    document.querySelector('.areaPoints').style.display = 'flex';
+    document.querySelector('.currentPoints').innerHTML = puntosjugador;
+}
+
+
+function generar() {
+    let carta;
+    let imagePath;
+
+    //evita que la primer carta sea un comodín
+    if (!primeraCartaGenerada) { 
+        carta = Math.floor(Math.random() * 10) + 1;
+        imagePath = "imagenes/carta" + carta + ".png";
+        primeraCartaGenerada = true;  
+    } else {
+        //se genera un numero del 0 al 1
+        let randomValue = Math.random();
+
+        //hace que tenga 70%, 10%, 5% de probabilidad que no sea comodin
+        if (randomValue < 0.7) {
+            carta = Math.floor(Math.random() * 10) + 1;
+            imagePath = "imagenes/carta" + carta + ".png";
+        } else if (randomValue < 0.85) {
+            // 15% de probabilidad de obtener comodin1
+            carta = "comodin1";
+            imagePath = "imagenes/comodin1.png";
+        } else if (randomValue < 0.95) {
+            carta = "comodin2";
+            imagePath = "imagenes/comodin2.png";
+        } else {
+            carta = "comodin3";
+            imagePath = "imagenes/comodin3.png";
+        }
+    }
+
+    // Actualizar la imagen en el HTML
+    document.querySelector(".cards").src = imagePath;
+
+    return carta; 
+}
+
+function evaluar(apuesta, mayor) {
+   //es para tener valor de la carta 
+    generador = generar();
+
+    puntosApostados = apuesta;
+
+        //cuando generador es igual a comodin 1, se suman +10
+    if (generador === "comodin1") {
+        alert('¡Carta especial! Ganaste 10 puntos.');
+        puntosjugador += 10;
+    } 
+    //entonces si generador es igual a comodin 2, duplica los puntos apostados, voltea otra carta si al carta es mayor se gana 2 puntos y si es menor se pierde 2 (en el caso de apostar 1 punto)
+    else if (generador === "comodin2") {
+        alert('¡Carta especial! Tu apuesta se duplicó.');
+        puntosApostados = apuesta * 2;
+        setTimeout(function(){
+
+
+        // no se muestran comodines
+        primeraCartaGenerada = false;
+        //vuelve a mostrar otra carta y la imprime en pantalla
+        generador = generar();
+        document.querySelector(".cards").src = "imagenes/carta" + generador + ".png";
+
+        //comprueba que la carta mostrada despues del comodin, sea mayor o menor que la anterior
+        if ((mayor && generador > apuesta) || (!mayor && generador < apuesta)) {
+            alert(`¡Genial, adivinaste! Ganaste ${puntosApostados} puntos.`);
+            puntosjugador += puntosApostados;
+        } else {
+            alert(`Lo siento, no adivinaste. Perdiste ${puntosApostados} puntos.`);
+            puntosjugador -= puntosApostados;
+        }
+    }
+    , 2500);
+    }
+    //carta del comodin que reinicia los puntos a 5
+    else if (generador === "comodin3") {
+        alert('¡Carta especial! Tu puntaje se reinició a 5 puntos.');
+        puntosjugador = 5;
+    } else if (generador === cartaAnterior) {
+        alert("La carta es igual a la anterior. No ganas ni pierdes puntos.");
+    } else {
+        
+        //aca dice que si apuesta mayor y la carta generada es mayor a cartaanterior o si apuesta menor y la carta generada es menor a la anterior, suma puntos
+        if ((mayor && generador > cartaAnterior) || (!mayor && generador < cartaAnterior)) {
+            alert(`¡Genial, adivinaste! Ganaste ${puntosApostados} puntos.`);
+            puntosjugador += puntosApostados;
+        } 
+        //si no se cumple la condición anterior, se restan puntos
+        else {
+            alert(`Lo siento, no adivinaste. Perdiste ${puntosApostados} puntos.`);
+            puntosjugador -= puntosApostados;
+        }
+    }
+
+    //muestra en pantalla los puntos del jugador
+    document.querySelector('.currentPoints').innerHTML = puntosjugador;
+
+
+    //este sirve para que el valor anterior nunca sea el de un comodin
+    if (generador !== "comodin1" && generador !== "comodin2" && generador !== "comodin3") {
+        cartaAnterior = generador;
+    }
+
+
+    //si los puntos del jugador es mayor a 50, gana y si es menor a 0, pierde y finalmente se reinicia el juego
+    if (puntosjugador >= 50) {
+        alert('¡Felicidades! Ganaste el juego.');
+        reiniciarJuego();
+    } else if (puntosjugador <= 0) {
+        alert('¡Lo siento! Perdiste el juego.');
+        reiniciarJuego();
+    }
+}
+
+//muestra el boton de iniciar, oculta los botones de apuesta, los puntos del jugador y vuelve a poner la carta al reves
+function reiniciarJuego(){
+    document.querySelector('.init').style.display = 'flex';
+    document.querySelector('.buttonBox').style.display = 'none';
+    document.querySelector('.areaPoints').style.display = 'none';
+    document.querySelector('.cards').src = "imagenes/cartaalreves.png";
+
+    //Se vuelve a setear en false para que la primera carta nunca sea un comodin
+    primeraCartaGenerada = false; 
+}
+    </script>
+
+</body>
+</html>

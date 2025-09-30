@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilos.css">
+    <title>Tira el dado</title>
+</head>
+<body class="body2">
+    <header>
+    <h1>¡Bienvenidos a la página de mini juegos!</h1>
+    </header>
+     <nav>
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="cartas.html">Jugar a las cartas</a></li>  
+            <li><a href="dados.html">Jugar a tirar dado</a></li>
+            <li><a href="sanrio.html">Sanrio</a></li>
+            <li><a href="informacion.html">Información</a></li>
+        </ul>
+    </nav>
+ <section>
+    <div class="bloque2">
+        <h2><strong>Tira el dado</strong></h2>
+        <div class="obj">
+        <h2><strong>Reglas del juego</strong></h2>
+        <p> - El objetivo del juego es acumular la mayor cantidad de puntos posible en 15 rondas.
+        - En cada ronda, los jugadores se turnan para tirar los dados. Cada jugador tira ambos dados en su turno.<br>
+        - Los puntos se suman de la siguiente manera: La suma de los valores de ambos dados es la cantidad de puntos ganados en esa ronda. Por ejemplo, si un jugador tira un dado y obtiene un 3 y el otro dado un 4, suma 3 + 4 = 7 puntos en esa ronda.<br>
+        - Si un jugador tira el dado y este sale el número 6, se le otorga una <strong>bonificación</strong> de 3 puntos extras pero si saca un 1 se le <strong>restan</strong> 3 puntos.<br>
+        - Los jugadores alternan sus turnos en cada ronda, comenzando con el jugador 1 en la primera ronda y luego alternando en cada ronda subsiguiente.<br>
+        - Después de 10 rondas, se suman los puntos acumulados por cada jugador a lo largo del juego. <br>
+        - El jugador con la puntuación total más alta al final de las 10 rondas gana el juego.</p>
+        </div>
+        
+        <div class="imagen3">
+            <img src="imagenes/sanrio3.jpg" alt="personajes de sanrio">
+            <img src="imagenes/sanrio4.jpg" alt="personajes de sanrio">
+            </div>
+        </div> 
+</section>
+    <h1 class="resultados">¡Que inicie el  juego!</h1>
+  
+    <div class="containercartas">
+        <div class="dice">
+            <p class="Player1">Jugador 1</p>
+            <img class="imag1" src="imagenes/dado00.png" alt="dado ¿">
+        </div>
+
+        <div class="dice">
+            <p class="Player2">Jugador 2</p>
+            <img class="imag2" src="imagenes/dado0.png"  alt="dado ?">
+        </div>
+    </div>
+  
+<div class="containerbottom">
+    <div class="containerbottom2">
+        <button type="button" class="butn"
+            onClick="sortear()">
+            Gira los dados
+        </button>
+    </div>
+    <div class="containerbottom2">
+        <button type="button" class="butn" 
+            onClick="editarNombres()">
+            Editar nombre
+        </button>
+    </div>
+</div>
+<script>
+    var player1 = "Jugador 1";
+    var player2 = "Jugador 2";
+    var puntosPlayer1 = 0;
+    var puntosPlayer2 = 0;
+    var actualRonda = 1;
+    var maxRondas = 5;
+  
+    //esta funcion cambia los nombres desde el html
+    function editarNombres() {
+        player1 = prompt("Cambia el nombre del Jugador 1");
+        player2 = prompt("Cambia el nombre del Jugador 2");
+  
+        document.querySelector("p.Player1").innerHTML = player1;
+        document.querySelector("p.Player2").innerHTML = player2;
+    }
+
+    // funcion que sortea el dado cambiando las imagenes y dice que si ambos dados son iguales, se empata, si el jugador uno saca mayor dado que el dos, gana, de lo contrario, el jugador 2 gana. y si la ronda actual pasa la cantidad maxima, termina el juego.
+    function sortear() {
+        if (actualRonda <= maxRondas) {
+            var randomNumber1 = Math.floor(Math.random() * 6) + 1;
+            var randomNumber2 = Math.floor(Math.random() * 6) + 1;
+
+            document.querySelector(".imag1").src = "imagenes/dado" + randomNumber1 + ".png";
+            document.querySelector(".imag2").src = "imagenes/dado" + randomNumber2 + ".png";
+
+            if (randomNumber1 === randomNumber2) {
+                document.querySelector("h1.resultados").innerHTML = " empataste la ronda " + actualRonda;
+            } else if (randomNumber1 < randomNumber2) {
+                document.querySelector("h1.resultados").innerHTML = (player2 + " Ganó la ronda " + actualRonda);
+                puntosPlayer2++;
+            } else {
+                document.querySelector("h1.resultados").innerHTML = (player1 + " Ganó la ronda " + actualRonda);
+                puntosPlayer1++;
+            }
+            console.log(actualRonda)
+            actualRonda++;
+
+            // Verificar si se ha alcanzado el final del juego después de actualizar actualRonda.
+            if (actualRonda > maxRondas) {
+                document.querySelector(".containerbottom").style.display = "none";
+                
+                setTimeout(function(){
+                    endGame();
+                },1000)
+            }
+        }
+    }
+
+    // Mueve la función endGame() fuera de sortear().
+    function endGame() {
+
+            alert("Fin del juego, Puntuación final:\n" + player1 + ": " + puntosPlayer1 + "\n" + player2 + ": " + puntosPlayer2);
+            reiniciarJuego();
+    }
+
+    // reinicia el juego y vuelve a mostrar los botones
+    function reiniciarJuego() {
+        actualRonda = 1;
+        puntosPlayer1 = 0;
+        puntosPlayer2 = 0;
+        rondasCompletadas = 0; // Reiniciar el contador de rondas completadas.
+        document.querySelector(".imag1").src = "imagenes/dado00.png";
+        document.querySelector(".imag2").src = "imagenes/dado0.png";
+        document.querySelector("h1.resultados").innerHTML = "¡Que inicie el juego!";
+        document.querySelector(".containerbottom").style.display = "block";
+    }
+</script>
+
+    <footer>
+        <p>Universidad Nacional de las Artes</p> 
+            <p>Melanie Travaglini</p>
+            <p>Informática General (Cát. Drelichman) Turno Mañana</p>
+    </footer>
+</body>
+</html>
